@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Projeto Java</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Favicons -->
+  <link href="/img/favicon-java.png" rel="icon">
+  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="dashboard.html" class="logo d-flex align-items-center">
+        <img src="/img/java.png" alt="">
+        <span class="d-none d-lg-block">Projeto Java</span>
+      </a>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Pesquisa" title="Entre com a palavra chave da pesquisa">
+        <button type="submit" title="Pesquisa"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="/img/dani-foto.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">D. Barros</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Daniele Barros  de Alvarenga</h6>
+              <span>Curso: Gestão da Tecnologia da Informação</span>
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" >
+                <i class="bi bi-person-vcard"></i>
+                <span>Matrícula: 202205230473</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center">
+                <i class="bi bi-building"></i>
+                <span>Faculdade Estácio - Graduação e Pós</span>
+              </a>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sair</span>
+              </a>
+            </li>
+
+        </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard - Pesquisa para Implementação de Curso EJA em Comunidades do Rio</h1>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Coluna da Esquerda -->
+        <div class="col-lg-8">
+          <div class="row">
+
+            <!-- Linha dos Cartões com quantidade ou percentual -->
+            <!-- Total de Entrevistados -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Total de Entrevistados</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6 th:text="${totalEntrevistados}"></h6>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- Final do Total de Entrevistados -->
+
+            <!-- Escolaridade Máxima -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card revenue-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Escolaridade Máxima</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-mortarboard"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6 th:text="${maxQtdeEscolaridade[1]}"></h6>
+                      <span class="text-success small pt-1 fw-bold" th:text="${maxQtdeEscolaridade[1] * 100 / totalEntrevistados} + '%'"></span> 
+                      <span class="text-muted small pt-2 ps-1" style="font-size: 0.775em;" th:text="${maxQtdeEscolaridade[0]}"></span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- Final de Escolaridade Máxima -->
+
+            <!-- Interesse em Voltar a Estudar -->
+            <div class="col-xxl-4 col-xl-12">
+
+              <div class="card info-card customers-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Continuar os Estudos</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-book"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6 th:text="${totalInteresse}"></h6>
+                      <span class="text-danger small pt-1 fw-bold" th:text="${totalInteresse * 100 / totalEntrevistados} + '%'"></span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div> <!-- Final doInteresse em Voltar a Estudar -->
+
+
+            <!-- Início do gráfico em linhas -->
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Interesse em retomar os estudos por faixa etária</h5>
+                  <!-- Canvas onde o gráfico será desenhado -->
+                  <canvas id="lineChart"></canvas>
+
+                  <script th:inline="javascript">
+                      // Thymeleaf insere os dados do backend como um array de arrays em JavaScript
+                      const dados = /*[[${qtdeFaixaEtaria}]]*/ [];
+
+                      // Separar os labels (nomes das comunidades) e os dados das faixas etárias
+                      const labels = dados.map(item => item[0]);  // Comunidades
+                      const faixa15_29 = dados.map(item => item[1]);  // Quantidade de pessoas na faixa 15-29
+                      const faixa30_49 = dados.map(item => item[2]);  // Quantidade de pessoas na faixa 30-49
+                      const faixa50_99 = dados.map(item => item[3]);  // Quantidade de pessoas na faixa 50-99
+
+                      // Configuração do gráfico
+                      const ctx = document.getElementById('lineChart').getContext('2d');
+                      const lineChart = new Chart(ctx, {
+                          type: 'line',
+                          data: {
+                              labels: labels,  // Nomes das comunidades no eixo X
+                              datasets: [
+                                  {
+                                      label: 'Faixa 15-29 anos',
+                                      data: faixa15_29,
+                                      borderColor: 'rgba(75, 192, 192, 1)',  // Cor da linha
+                                      backgroundColor: 'rgba(75, 192, 192, 0.2)',  // Cor de fundo
+                                      fill: false,
+                                      cubicInterpolationMode: 'monotone',
+                                      tension: 0.4  // Faz as linhas serem curvas
+                                  },
+                                  {
+                                      label: 'Faixa 30-49 anos',
+                                      data: faixa30_49,
+                                      borderColor: 'rgba(54, 162, 235, 1)',
+                                      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                      fill: false,
+                                      cubicInterpolationMode: 'monotone',
+                                      tension: 0.4  // Faz as linhas serem curvas
+                                  },
+                                  {
+                                      label: 'Faixa 50-99 anos',
+                                      data: faixa50_99,
+                                      borderColor: 'rgba(255, 99, 132, 1)',
+                                      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                      fill: false,
+                                      cubicInterpolationMode: 'monotone',
+                                      tension: 0.4  // Faz as linhas serem curvas
+                                  }
+                              ]
+                          },
+                          options: {
+                              responsive: true,
+                              animation: {
+                                  duration: 2000,  // Duração da animação (2 segundos)
+                                  easing: 'easeInOutCubic'  // Estilo da animação (movimento suave e elástico)
+                              },
+                              scales: {
+                                  y: {
+                                      beginAtZero: true  // O eixo Y começa no zero
+                                  }
+                              }
+                          }
+                      });
+                  </script> 
+                </div>
+              </div>  
+            </div> <!-- Final do gráfico em linhas -->
+
+            <!-- Início do gráfico em barras -->
+            <div class="col-lg-12"> 
+              <div class="card recent-sales overflow-auto">
+                  <div class="filter">
+                      <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                          <li class="dropdown-header text-start">
+                              <h6>Filtro</h6>
+                          </li>
+                          <li><a class="dropdown-item" href="#" data-escolaridade="ANAFALBETO">Sem Instrução</a></li>
+                          <li><a class="dropdown-item" href="#" data-escolaridade="FUNDAMENTAL_INCOMPLETO">Fundamental Incompleto</a></li>
+                          <li><a class="dropdown-item" href="#" data-escolaridade="FUNDAMENTAL_COMPLETO">Fundamental Completo</a></li>
+                          <li><a class="dropdown-item" href="#" data-escolaridade="MEDIO_INCOMPLETO">Médio Incompleto</a></li>
+                          <li><a class="dropdown-item" href="#" data-escolaridade="MEDIO_COMPLETO">Médio Completo</a></li>
+                          <li><a class="dropdown-item" href="#" data-escolaridade="SUPERIOR_INCOMPLETO">Superior Incompleto</a></li>
+                          <li><a class="dropdown-item" href="#" data-escolaridade="SUPERIOR_COMPLETO">Superior Completo</a></li>
+                      </ul>
+                  </div>
+
+                  <div class="card-body">
+                      <h5 class="card-title">Quantidade de pessoas por escolaridades <span>| Selecione o filtro</span></h5>
+                      <!-- Canvas onde o gráfico será desenhado -->
+                      <canvas id="barChart"></canvas>
+
+                      <script th:inline="javascript">
+                          // Thymeleaf injeta os dados do backend como um array de arrays em JavaScript
+                          const dadosBarra = /*[[${qtdeEscolaridade}]]*/ [];
+                          
+                          // Processar os dados para estruturar para o gráfico
+                          const comunidadesSet = new Set(dadosBarra.map(item => item[0]));
+                          const comunidades = Array.from(comunidadesSet);
+
+                          const escolaridadesSet = new Set(dadosBarra.map(item => item[1]));
+                          const escolaridades = Array.from(escolaridadesSet);
+
+                          const dataPerEscolaridade = {};
+                          escolaridades.forEach(escolaridade => {
+                              dataPerEscolaridade[escolaridade] = comunidades.map(comunidade => {
+                                  const entry = dadosBarra.find(item => item[0] === comunidade && item[1] === escolaridade);
+                                  return entry ? entry[2] : 0;
+                              });
+                          });
+
+                          // Inicializar o gráfico
+                          const ctxBarra = document.getElementById('barChart').getContext('2d');
+                          let barChart = new Chart(ctxBarra, {
+                              type: 'bar',
+                              data: {
+                                  labels: comunidades,  // Comunidades no eixo Y
+                                  datasets: []
+                              },
+                              options: {
+                                  responsive: true,
+                                  indexAxis: 'y',  // Gráfico horizontal
+                                  scales: {
+                                      x: { beginAtZero: true }  // O eixo X começa no zero
+                                  }
+                              }
+                          });
+
+                          // Função para atualizar o gráfico com base nas escolaridades selecionadas
+                          function updateChart() {
+                              const selectedEscolaridades = Array.from(document.querySelectorAll('.dropdown-menu .dropdown-item.active'))
+                                  .map(item => item.getAttribute('data-escolaridade'));
+
+                              const filteredDatasets = selectedEscolaridades.map((escolaridade, index) => {
+                                  return {
+                                      label: escolaridade,
+                                      data: dataPerEscolaridade[escolaridade],
+                                      backgroundColor: colors[index % colors.length],
+                                      borderColor: borderColors[index % borderColors.length],
+                                      borderWidth: 1
+                                  };
+                              });
+
+                              barChart.data.datasets = filteredDatasets;
+                              barChart.update();
+                          }
+
+                          // Adicionar evento de clique aos itens do dropdown
+                          document.querySelectorAll('.dropdown-item').forEach(item => {
+                              item.addEventListener('click', function (event) {
+                                  event.preventDefault();
+                                  this.classList.toggle('active');
+                                  updateChart();
+                              });
+                          });
+
+                          // Definir cores para os datasets
+                          const colors = ['rgba(75, 192, 192, 0.6)', 'rgba(54, 162, 235, 0.6)', 
+                                          'rgba(255, 99, 132, 0.6)', 'rgba(255, 206, 86, 0.6)',
+                                          'rgba(153, 102, 255, 0.6)', 'rgba(255, 159, 64, 0.6)'];
+                          const borderColors = ['rgba(75, 192, 192, 1)', 'rgba(54, 162, 235, 1)', 
+                                                'rgba(255, 99, 132, 1)', 'rgba(255, 206, 86, 1)',
+                                                'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'];
+
+                          // Inicializar o gráfico com todas as escolaridades selecionadas
+                          updateChart();
+                      </script>
+                  </div>
+              </div>
+            </div> <!-- Final do gráfico em barras -->
+
+
+          </div>
+        </div><!-- Final da Coluna da Esquerda -->
+
+        <!-- Coluna da Direita -->
+        <div class="col-lg-4">
+
+          <!-- Quantidade de entrevistados por Comunidade -->
+          <div class="card">
+
+            <div class="card-body">
+              <h5 class="card-title">Qtde de Entrevistados <span>| Por Comunidade</span></h5>
+
+              <div class="activity">
+
+                <!-- Aqui repetimos as divs para cada item em 'respostas' -->
+                <div th:each="resposta, iterStat : ${respostas}" class="activity-item d-flex">
+                    <div class="activite-label" th:text="${resposta[1]}"></div> <!-- Exibe a quantidade -->
+                    <i class="bi bi-circle-fill activity-badge align-self-start"
+                       th:classappend="${iterStat.index == 0 ? 'text-success' :
+                                        iterStat.index == 1 ? 'text-primary' :
+                                        iterStat.index == 2 ? 'text-danger' :
+                                        iterStat.index == 3 ? 'text-warning' : 'text-muted'}">
+                    </i>
+                    <div class="activity-content" th:text="${resposta[0]}"></div> <!-- Exibe o nome da comunidade -->
+                </div>
+
+              </div>
+
+            </div>
+          </div><!-- Final da Quantidade de entrevistados por Comunidade -->
+
+          <!-- Início do Gráfico de Pizza -->
+          <div class="card">
+            <div class="card-body pb-0">
+              <h5 class="card-title">Predominância de Faixas Etárias<span>| Nas Comunidades</span></h5>
+
+              <!-- Gráfico de Pizza -->
+              <div>
+                <canvas id="pizzaChart"></canvas>
+              </div>
+
+              <script th:inline="javascript">
+                // Thymeleaf injeta os dados do backend como um array de arrays em JavaScript
+                const dadosFaixaEtaria = /*[[${qtdeTotalFaixaEtaria}]]*/ [];
+
+                const labelsPizza = [];
+                const data = [];
+                const backgroundColors = [];
+
+                // Processa os dados para estruturar para o gráfico
+                dadosFaixaEtaria.forEach(item => {
+                    const faixaEtaria = item[0];
+                    const quantidade = item[1];
+
+                    labelsPizza.push(faixaEtaria);
+                    data.push(quantidade);
+                    backgroundColors.push(getRandomColor());
+                });
+
+                // Inicializar o gráfico de pizza
+                const ctxPizza = document.getElementById('pizzaChart').getContext('2d');
+                new Chart(ctxPizza, {
+                    type: 'pie',
+                    data: {
+                        labels: labelsPizza,
+                        datasets: [{
+                            data: data,
+                            backgroundColor: backgroundColors
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(tooltipItem) {
+                                        const total = data.reduce((acc, curr) => acc + curr, 0);
+                                        const percentage = ((tooltipItem.raw / total) * 100).toFixed(2) + '%';
+                                        return tooltipItem.label + ': ' + tooltipItem.raw + ' (' + percentage + ')';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // Função para gerar cores aleatórias
+                function getRandomColor() {
+                    const letters = '0123456789ABCDEF';
+                    let color = '#';
+                    for (let i = 0; i < 6; i++) {
+                        color += letters[Math.floor(Math.random() * 16)];
+                    }
+                    return color;
+                }
+              </script>
+
+            </div>
+          </div>
+
+        </div><!-- Final da coluna da Direita -->
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Daniele Barros de Alvarenga</span></strong>. Todos os Direitos Reservados
+    </div>
+    <div class="credits">
+      Setembro/2024
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/chart.js/chart.umd.js"></script>
+  <script src="/vendor/echarts/echarts.min.js"></script>
+  <script src="/vendor/quill/quill.js"></script>
+  <script src="/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/js/main.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+
+</html>
