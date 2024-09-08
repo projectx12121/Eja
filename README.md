@@ -1,5 +1,15 @@
 # Projeto_EJA
 
+Universidade Estácio de Sá
+
+Curso: Gestão da Tecnologia da Informação Matéria: Projeto de Extensão - Tópicos de Big Data em Python
+
+Autora: Daniele Barros Alvarenga
+
+Matrícula: 2205230473
+
+-----------------------------------------------------------------------------
+
 Descrição do Projeto:
 
 O projeto de educação comunitária visa a implantação de um curso de Educação de Jovens e Adultos (EJA) em diversas comunidades do Rio de Janeiro. O foco inicial é realizar uma pesquisa para identificar o grau de escolaridade dos moradores e determinar os locais com maior potencial para captar alunos interessados em retornar aos estudos. Para alcançar esse objetivo, a pesquisa considerará fatores como faixa etária, nível de escolaridade atual e o interesse em continuar a educação. A partir dos dados coletados, será possível escolher as comunidades mais adequadas para a implementação do curso EJA, promovendo a educação e o desenvolvimento pessoal de jovens e adultos.
